@@ -8,5 +8,4 @@ return(<footer className={styles.pie}>
 </footer>)
 
 }
-
 export default Pie

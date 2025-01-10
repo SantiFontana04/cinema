@@ -1,16 +1,28 @@
 import Banner from "../../components/Banner";
-import Card from "../../components/Card/Card";
 import Titulo from "../../components/Titulo";
-import styles from "./index.module.css"
-import videos from "../../data/db.json"
+import Card from "../../components/Card/Card";
+import styles from "./index.module.css";
+import { useState, useEffect } from "react";
 
 function Inicio() {
-    return (
+    const [videos, setVideos] = useState([]);
+
+        useEffect(() => {
+        fetch(
+            "https://my-json-server.typicode.com/DaniRiverol/alura-cinema-api/videos"
+        )
+            .then((response) => response.json())
+            .then((data) => {
+            setVideos(data);
+            });
+        }, []);
+        return (
         <>
             <Banner img="home" color="#154580" />
             <Titulo>
             <h1>Un lugar para guardar sus videos favoritos </h1>
             </Titulo>
+
             <section className={styles.container}>
             {videos.map((video) => {
                 return <Card {...video} key={video.id} />;

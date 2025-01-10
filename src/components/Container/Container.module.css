@@ -1,5 +1,5 @@
 .container {
-    margin: 2em;
+    flex-direction: column;
     text-align: center;
     display: flex;
     justify-content: space-around;
